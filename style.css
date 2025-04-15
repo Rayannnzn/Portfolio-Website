@@ -179,3 +179,14 @@ footer .footer-rights{
     padding: 12px 0;
 }
 
+
+.footer ul li:hover{
+    color: rgb(17, 17, 77);
+}
+
+.footer ul li{
+    cursor: pointer;
+}
+
+
+
