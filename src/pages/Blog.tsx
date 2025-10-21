@@ -10,7 +10,7 @@ const Blog = () => {
       id: "gas-efficient-stablecoin",
       title: "Building a Gas-Efficient Stablecoin — Lessons & Patterns",
       excerpt: "Deep dive into mint/burn mechanics and gas optimization strategies for stablecoin-like contracts. Learn how to design efficient token systems.",
-      date: "January 15, 2025",
+      date: "January 8, 2025",
       readTime: "8 min read",
       tags: ["Solidity", "DeFi", "Gas Optimization"]
     },
@@ -18,7 +18,7 @@ const Blog = () => {
       id: "crowdfunding-case-study",
       title: "From Idea to Mainnet: Crowdfunding DApp Case Study",
       excerpt: "Step-by-step walkthrough of a crowdfunding dApp lifecycle: smart contracts, frontend development, security audits, and mainnet deployment.",
-      date: "January 8, 2025",
+      date: "January 15, 2025",
       readTime: "12 min read",
       tags: ["Case Study", "dApp", "Full-Stack"]
     },
@@ -26,7 +26,7 @@ const Blog = () => {
       id: "raffle-randomness",
       title: "Raffle & Lottery on Ethereum — Randomness & Fairness",
       excerpt: "How to design a verifiable raffle system, tradeoffs of on-chain randomness solutions, and best practices for provably fair lotteries.",
-      date: "December 28, 2024",
+      date: "March 28, 2025",
       readTime: "10 min read",
       tags: ["Chainlink", "VRF", "Security"]
     },
@@ -34,7 +34,7 @@ const Blog = () => {
       id: "wallet-ux-best-practices",
       title: "Wallet UX: Best Practices for dApp Onboarding",
       excerpt: "Practical patterns to reduce friction when users connect wallets and sign transactions. Make Web3 feel like Web2.",
-      date: "December 20, 2024",
+      date: "July 28, 2025",
       readTime: "6 min read",
       tags: ["UX", "Frontend", "Web3"]
     }

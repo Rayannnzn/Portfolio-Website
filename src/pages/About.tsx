@@ -33,16 +33,16 @@ const About = () => {
   const timeline = [
     {
       year: "2025",
-      title: "Senior Web3 Developer",
+      title: "Full-Stack Web3 Development",
       description: "Building production dApps and consulting for Web3 startups"
     },
     {
       year: "2023-2024",
-      title: "Full-Stack Web3 Development",
+      title: "Junior Blockchain Developer",
       description: "Launched 10+ smart contracts and dApps on Ethereum mainnet"
     },
     {
-      year: "2022",
+      year: "2023",
       title: "Started Web3 Journey",
       description: "Discovered blockchain development and began learning Solidity"
     }
