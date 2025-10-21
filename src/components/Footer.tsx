@@ -18,7 +18,7 @@ const Footer = () => {
             </p>
             <div className="flex gap-3">
               <a
-                href="https://github.com"
+                href="https://github.com/Rayannnzn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:bg-primary/10 hover:text-primary transition-all glow-hover"
@@ -27,7 +27,7 @@ const Footer = () => {
                 <GithubLogo size={20} weight="light" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/muhammad-rayan-779318320"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:bg-primary/10 hover:text-primary transition-all glow-hover"
@@ -36,7 +36,7 @@ const Footer = () => {
                 <LinkedinLogo size={20} weight="light" />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://x.com/real_rayanhere"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:bg-primary/10 hover:text-primary transition-all glow-hover"
@@ -120,9 +120,7 @@ const Footer = () => {
                   Download Resume
                 </a>
               </li>
-              <li className="text-muted-foreground text-xs pt-2">
-                Timezone: Asia/Karachi (UTC+5)
-              </li>
+
             </ul>
           </div>
         </div>
