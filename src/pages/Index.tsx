@@ -190,6 +190,7 @@ const Index = () => {
       description={project.shortDescription}
       techStack={project.techStack}
       liveUrl={project.liveUrl}
+      liveCode={project.liveCode}
       caseStudyUrl={project.caseStudyUrl}
       image={project.image} // Add this line
     />

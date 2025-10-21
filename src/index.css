@@ -2,10 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
+/* === Design System === */
 @layer base {
   :root {
     /* Luxury Dark Theme - Web3 Portfolio */
@@ -61,7 +58,8 @@ All colors MUST be HSL.
     --transition-bounce: all 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
 
     /* Shadows */
-    --shadow-neumorphic: inset 2px 2px 8px hsl(225 25% 4% / 0.8), inset -2px -2px 8px hsl(225 20% 16% / 0.2);
+    --shadow-neumorphic: inset 2px 2px 8px hsl(225 25% 4% / 0.8),
+      inset -2px -2px 8px hsl(225 20% 16% / 0.2);
     --shadow-elevated: 0 8px 32px hsl(225 25% 4% / 0.6);
     --shadow-glow: 0 0 32px hsl(var(--glow-primary));
   }
@@ -95,28 +93,34 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
+  /* === Glassmorphism === */
   .glass-card {
     background: linear-gradient(135deg, hsl(225 20% 16% / 0.6) 0%, hsl(225 20% 12% / 0.4) 100%);
     backdrop-filter: blur(16px);
     border: 1px solid hsl(225 15% 30% / 0.2);
   }
 
+  /* === Glow Hover === */
   .glow-hover {
     transition: all 0.4s ease;
   }
 
   .glow-hover:hover {
-    box-shadow: 0 0 32px hsl(260 90% 68% / 0.4),
-                0 0 64px hsl(260 90% 68% / 0.2);
+    box-shadow:
+      0 0 32px hsl(260 90% 68% / 0.4),
+      0 0 64px hsl(260 90% 68% / 0.2);
     transform: translateY(-2px);
   }
 
-  .glow-backdrop {
+  /* === Glow Backdrops (fixed pointer behavior) === */
+  .glow-backdrop,
+  .glow-backdrop-strong {
     position: relative;
     z-index: 1;
   }
 
-  .glow-backdrop::before {
+  .glow-backdrop::before,
+  .glow-backdrop-strong::before {
     content: '';
     position: absolute;
     inset: -40%;
@@ -124,34 +128,36 @@ All colors MUST be HSL.
     filter: blur(80px);
     z-index: -1;
     opacity: 0.8;
-  }
-
-  .glow-backdrop-strong {
-    position: relative;
-    z-index: 1;
+    pointer-events: none; /* ✅ Prevents blocking hover/click */
   }
 
   .glow-backdrop-strong::before {
-    content: '';
-    position: absolute;
     inset: -60%;
-    background: radial-gradient(circle, hsl(260 90% 68% / 0.5) 0%, hsl(280 90% 65% / 0.3) 40%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      hsl(260 90% 68% / 0.5) 0%,
+      hsl(280 90% 65% / 0.3) 40%,
+      transparent 70%
+    );
     filter: blur(120px);
-    z-index: -1;
     opacity: 0.9;
   }
 
+  /* === Ambient Glow === */
   .ambient-glow {
-    box-shadow: 0 0 60px hsl(260 90% 68% / 0.2), 
-                0 0 120px hsl(260 90% 68% / 0.1);
+    box-shadow:
+      0 0 60px hsl(260 90% 68% / 0.2),
+      0 0 120px hsl(260 90% 68% / 0.1);
   }
 
   .ambient-glow-strong {
-    box-shadow: 0 0 80px hsl(260 90% 68% / 0.3), 
-                0 0 160px hsl(260 90% 68% / 0.15),
-                0 0 240px hsl(260 90% 68% / 0.05);
+    box-shadow:
+      0 0 80px hsl(260 90% 68% / 0.3),
+      0 0 160px hsl(260 90% 68% / 0.15),
+      0 0 240px hsl(260 90% 68% / 0.05);
   }
 
+  /* === Text Gradient === */
   .text-gradient {
     background: linear-gradient(135deg, hsl(260 90% 68%) 0%, hsl(280 90% 65%) 100%);
     -webkit-background-clip: text;
@@ -159,7 +165,7 @@ All colors MUST be HSL.
     -webkit-text-fill-color: transparent;
   }
 
-  /* Prose styles for blog content */
+  /* === Prose === */
   .prose h2 {
     @apply text-3xl font-light tracking-tight mt-12 mb-4 text-foreground;
   }

@@ -15,6 +15,7 @@ export const projects = [
     image: stablecoinPreview, // Add this line
     techStack: ["Solidity", "Next.js", "Web3.js", "Chainlink", "TypeScript"],
     liveUrl: "https://stablecoin-dapp.vercel.app",
+    liveCode: "https://github.com/Rayannnzn/Stable-Coin-DApp",
     caseStudyUrl: "/projects/stablecoin",
     duration: "4 months",
     role: "Full-stack (UI + Smart Contracts)",
@@ -38,6 +39,7 @@ export const projects = [
     image: crowdfundingPreview, // Add this line
     techStack: ["Solidity", "React", "Hardhat", "IPFS", "MetaMask"],
     liveUrl: "https://crowd-funding-dapp-kappa.vercel.app",
+    liveCode: "https://github.com/Rayannnzn/Crowd-Funding-Dapp",
     caseStudyUrl: "/projects/crowdfunding",
     duration: "2.5 months",
     role: "Full-stack (UI + Smart Contracts)",
@@ -62,6 +64,7 @@ export const projects = [
     image: rafflePreview, // Add this line
     techStack: ["Solidity", "React", "Chainlink VRF", "Web3.js", "Tailwind"],
     liveUrl: "https://raffle-dapp-navy.vercel.app",
+    liveCode: "https://github.com/Rayannnzn/Decentralized-Raffle-DApp",
     caseStudyUrl: "/projects/raffle",
     duration: "2 months",
     role: "Full-stack (UI + Smart Contracts)",
@@ -85,6 +88,7 @@ export const projects = [
     image: tsenderPreview, // Add this line
     techStack: ["Solidity", "React", "Hardhat", "Ethers.js", "Tailwind"],
     liveUrl: "https://t-sender-ui-cyan.vercel.app",
+    liveCode: "https://github.com/Rayannnzn/TSender-UI",
     caseStudyUrl: "/projects/tsender",
     duration: "3 months",
     role: "Full-stack (UI + Smart Contracts)",
