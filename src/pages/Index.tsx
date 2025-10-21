@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import emailjs from '@emailjs/browser';
 import { 
   Code, 
   Gauge, 
@@ -8,7 +9,9 @@ import {
   ChartLine, 
   ArrowRight,
   CaretRight,
-  CaretLeft
+  CaretLeft,
+  CheckCircle,
+  XCircle
 } from "@phosphor-icons/react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -21,6 +24,21 @@ import { projects } from "@/data/projects";
 import heroImage from "@/assets/hero-dashboard.jpg";
 
 const Index = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    budget: '',
+    message: '',
+    nda: false
+  });
+  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  // EmailJS Configuration - REPLACE THESE WITH YOUR ACTUAL VALUES
+  const EMAILJS_SERVICE_ID = 'service_92jjfni';
+  const EMAILJS_TEMPLATE_ID = 'template_vuqeh55';
+  const EMAILJS_PUBLIC_KEY = 'IGMmjXv29uCCLgs5T';
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -36,6 +54,64 @@ const Index = () => {
     document.querySelectorAll(".observe-section").forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
+    
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus('sending');
+
+    try {
+      // Prepare email parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        company: formData.company || 'Not specified',
+        budget: formData.budget || 'Not specified',
+        message: formData.message,
+        nda: formData.nda ? 'Yes' : 'No',
+        to_email: 'your-email@example.com' // Your email
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      setFormStatus('success');
+      
+      // Reset form after success
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        budget: '',
+        message: '',
+        nda: false
+      });
+
+      // Reset status after 5 seconds
+      setTimeout(() => setFormStatus('idle'), 5000);
+
+    } catch (error) {
+      console.error('Email send failed:', error);
+      setFormStatus('error');
+      
+      // Reset status after 5 seconds
+      setTimeout(() => setFormStatus('idle'), 5000);
+    }
+  };
 
   const testimonials = [
     {
@@ -180,24 +256,19 @@ const Index = () => {
             </p>
           </div>
 
-
-
-<div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-  {projects.map((project) => (
-    <ProjectCard
-      key={project.id}
-      title={project.title}
-      description={project.shortDescription}
-      techStack={project.techStack}
-      liveUrl={project.liveUrl}
-      liveCode={project.liveCode}
-      caseStudyUrl={project.caseStudyUrl}
-      image={project.image} // Add this line
-    />
-  ))}
-</div>
-
-
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+            {projects.map((project) => (
+              <ProjectCard
+                key={project.id}
+                title={project.title}
+                description={project.shortDescription}
+                techStack={project.techStack}
+                liveUrl={project.liveUrl}
+                caseStudyUrl={project.caseStudyUrl}
+                image={project.image}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -305,48 +376,111 @@ const Index = () => {
             </p>
           </div>
 
-          <form className="glass-card rounded-2xl p-8 space-y-6 glow-backdrop ambient-glow">
+          <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-8 space-y-6 glow-backdrop ambient-glow">
+            {/* Success Message */}
+            {formStatus === 'success' && (
+              <div className="flex items-center gap-3 p-4 rounded-lg bg-green-500/10 border border-green-500/20">
+                <CheckCircle size={24} weight="fill" className="text-green-500" />
+                <p className="text-green-500">Message sent successfully! I'll get back to you soon.</p>
+              </div>
+            )}
+
+            {/* Error Message */}
+            {formStatus === 'error' && (
+              <div className="flex items-center gap-3 p-4 rounded-lg bg-red-500/10 border border-red-500/20">
+                <XCircle size={24} weight="fill" className="text-red-500" />
+                <p className="text-red-500">Failed to send message. Please try again or email directly.</p>
+              </div>
+            )}
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium mb-2">Name</label>
-                <Input placeholder="Your name" className="bg-background/50" />
+                <label className="block text-sm font-medium mb-2">Name *</label>
+                <Input 
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder="Your name" 
+                  className="bg-background/50" 
+                  required
+                />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Email</label>
-                <Input type="email" placeholder="your@email.com" className="bg-background/50" />
+                <label className="block text-sm font-medium mb-2">Email *</label>
+                <Input 
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="your@email.com" 
+                  className="bg-background/50" 
+                  required
+                />
               </div>
             </div>
 
             <div>
               <label className="block text-sm font-medium mb-2">Company</label>
-              <Input placeholder="Your company (optional)" className="bg-background/50" />
+              <Input 
+                name="company"
+                value={formData.company}
+                onChange={handleInputChange}
+                placeholder="Your company (optional)" 
+                className="bg-background/50" 
+              />
             </div>
 
             <div>
               <label className="block text-sm font-medium mb-2">Project Budget</label>
-              <select className="w-full px-4 py-2 rounded-md bg-background/50 border border-border focus:outline-none focus:ring-2 focus:ring-primary">
-                <option>Select budget range</option>
-                <option>$5,000 - $10,000</option>
-                <option>$10,000 - $25,000</option>
-                <option>$25,000 - $50,000</option>
-                <option>$50,000+</option>
+              <select 
+                name="budget"
+                value={formData.budget}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 rounded-md bg-background/50 border border-border focus:outline-none focus:ring-2 focus:ring-primary"
+              >
+                <option value="">Select budget range</option>
+                <option value="$5,000 - $10,000">$5,000 - $10,000</option>
+                <option value="$10,000 - $25,000">$10,000 - $25,000</option>
+                <option value="$25,000 - $50,000">$25,000 - $50,000</option>
+                <option value="$50,000+">$50,000+</option>
               </select>
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Message</label>
-              <Textarea placeholder="Tell me about your project..." rows={5} className="bg-background/50" />
+              <label className="block text-sm font-medium mb-2">Message *</label>
+              <Textarea 
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                placeholder="Tell me about your project..." 
+                rows={5} 
+                className="bg-background/50" 
+                required
+              />
             </div>
 
             <div className="flex items-center gap-2">
-              <input type="checkbox" id="nda" className="rounded" />
+              <input 
+                type="checkbox" 
+                id="nda" 
+                name="nda"
+                checked={formData.nda}
+                onChange={handleInputChange}
+                className="rounded" 
+              />
               <label htmlFor="nda" className="text-sm text-muted-foreground">
                 I'm interested in signing an NDA
               </label>
             </div>
 
-            <Button variant="neumorphic" size="lg" className="w-full">
-              Send Message
+            <Button 
+              type="submit"
+              variant="neumorphic" 
+              size="lg" 
+              className="w-full"
+              disabled={formStatus === 'sending'}
+            >
+              {formStatus === 'sending' ? 'Sending...' : 'Send Message'}
               <ArrowRight size={20} weight="light" />
             </Button>
           </form>
