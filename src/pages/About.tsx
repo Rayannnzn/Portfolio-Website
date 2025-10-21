@@ -63,7 +63,7 @@ const About = () => {
               About <span className="text-gradient">Rayan</span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              Web3 Developer with 3+ years building secure smart contracts and dApps
+              Web3 Developer with 2+ years building secure smart contracts and dApps
             </p>
           </div>
 
@@ -86,19 +86,19 @@ const About = () => {
 
           {/* Social Links */}
           <div className="flex justify-center gap-4 mb-12">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/Rayannnzn" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="lg">
                 <GithubLogo size={20} weight="light" />
                 GitHub
               </Button>
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/muhammad-rayan-779318320" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="lg">
                 <LinkedinLogo size={20} weight="light" />
                 LinkedIn
               </Button>
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://x.com/real_rayanhere" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="lg">
                 <TwitterLogo size={20} weight="light" />
                 Twitter
