@@ -5,24 +5,24 @@
 /* === Design System === */
 @layer base {
   :root {
-    /* Luxury Dark Theme - Web3 Portfolio */
-    --background: 225 25% 8%;
-    --foreground: 210 40% 98%;
+    /* — Refined Soft-Dark Theme — */
+    --background: 225 20% 12%;
+    --foreground: 210 40% 96%;
 
-    --card: 225 20% 12%;
+    --card: 225 20% 16%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 225 25% 10%;
+    --popover: 225 20% 14%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 260 90% 68%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 225 20% 18%;
+    --secondary: 225 15% 24%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 225 15% 20%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 225 15% 26%;
+    --muted-foreground: 215 20% 75%;
 
     --accent: 260 90% 68%;
     --accent-foreground: 0 0% 100%;
@@ -30,16 +30,16 @@
     --destructive: 0 70% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 225 15% 20%;
-    --input: 225 15% 20%;
+    --border: 225 10% 28%;
+    --input: 225 10% 28%;
     --ring: 260 90% 68%;
 
     --radius: 1rem;
 
     /* Glassmorphic effects */
-    --glass-bg: 225 20% 12% / 0.4;
-    --glass-border: 225 15% 30% / 0.2;
-    --glass-backdrop: blur(16px);
+    --glass-bg: 225 20% 20% / 0.4;
+    --glass-border: 225 15% 35% / 0.2;
+    --glass-backdrop: blur(18px);
 
     /* Glow effects */
     --glow-primary: 260 90% 68% / 0.4;
@@ -50,17 +50,17 @@
 
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(260 90% 68%) 0%, hsl(280 90% 65%) 100%);
-    --gradient-dark: linear-gradient(180deg, hsl(225 25% 8%) 0%, hsl(225 30% 6%) 100%);
-    --gradient-glass: linear-gradient(135deg, hsl(225 20% 16% / 0.6) 0%, hsl(225 20% 12% / 0.4) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(225 20% 12%) 0%, hsl(225 25% 10%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(225 20% 20% / 0.6) 0%, hsl(225 20% 16% / 0.4) 100%);
 
     /* Transitions */
     --transition-smooth: all 320ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
 
     /* Shadows */
-    --shadow-neumorphic: inset 2px 2px 8px hsl(225 25% 4% / 0.8),
-      inset -2px -2px 8px hsl(225 20% 16% / 0.2);
-    --shadow-elevated: 0 8px 32px hsl(225 25% 4% / 0.6);
+    --shadow-neumorphic: inset 2px 2px 8px hsl(225 25% 8% / 0.8),
+      inset -2px -2px 8px hsl(225 20% 20% / 0.2);
+    --shadow-elevated: 0 8px 32px hsl(225 25% 8% / 0.6);
     --shadow-glow: 0 0 32px hsl(var(--glow-primary));
   }
 }
@@ -71,7 +71,7 @@
   }
 
   body {
-    @apply bg-gradient-to-b from-background to-[hsl(225,30%,6%)] text-foreground;
+      @apply bg-gradient-to-b from-[hsl(225,20%,12%)] to-[hsl(225,25%,10%)] text-foreground;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;

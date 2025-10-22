@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === LUNEXA PURPLE GLOW THEME — About Page Only === */
+@layer base {
+  :root {
+    /* Core Theme Colors */
+    --background: 260 60% 9%;
+    --foreground: 260 15% 96%;
+
+    --card: 260 45% 14%;
+    --card-foreground: 260 15% 96%;
+
+    --primary: 265 90% 72%;
+    --primary-foreground: 260 60% 10%;
+
+    --secondary: 260 40% 18%;
+    --secondary-foreground: 260 15% 96%;
+
+    --border: 260 40% 22%;
+    --glass-border: 265 90% 72%;
+
+    --glow-primary: 265 90% 72%;
+    --glow-secondary: 290 85% 75%;
+
+    /* Brighter & Glow Background */
+    --gradient-background: radial-gradient(circle at 50% 0%,
+        hsl(265 90% 20%) 0%,
+        hsl(260 70% 10%) 40%,
+        hsl(250 60% 8%) 100%);
+
+    --gradient-primary: linear-gradient(135deg, hsl(265 90% 72%), hsl(290 85% 75%));
+
+    --shadow-glow: 0 0 50px hsla(265, 90%, 72%, 0.5);
+    --shadow-glow-lg: 0 0 90px hsla(265, 90%, 72%, 0.6);
+  }
+
+  body.about-page {
+    background: var(--gradient-background);
+    color: hsl(var(--foreground));
+    background-attachment: fixed;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 300;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    opacity: 0.8;
+  }
+}
+
+/* === Utilities === */
+@layer utilities {
+  /* Gradient Text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Glassmorphism Cards */
+  .glass {
+    background: hsla(260, 45%, 15%, 0.65);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid hsla(265, 90%, 72%, 0.15);
+  }
+
+  .glass-card {
+    @apply glass rounded-2xl relative overflow-hidden;
+    border: 1px solid hsla(265, 90%, 72%, 0.25);
+    box-shadow:
+      0 0 25px hsla(265, 90%, 72%, 0.15),
+      inset 0 0 10px hsla(265, 90%, 72%, 0.05);
+    transition: all 0.3s ease;
+    padding: 1rem;
+  }
+
+  .glass-card:hover {
+    box-shadow:
+      0 0 50px hsla(265, 90%, 72%, 0.4),
+      inset 0 0 20px hsla(265, 90%, 72%, 0.15);
+    transform: translateY(-2px);
+  }
+
+  /* Frame Glow Behind Image */
+  .glass-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center,
+      hsla(265, 90%, 72%, 0.4) 0%,
+      hsla(265, 90%, 72%, 0.15) 40%,
+      transparent 80%);
+    filter: blur(50px);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* Inner Frame */
+  .glass-card img {
+    position: relative;
+    z-index: 1;
+    border-radius: 1rem;
+    border: 2px solid hsla(265, 90%, 72%, 0.3);
+    box-shadow: inset 0 0 15px hsla(265, 90%, 72%, 0.15);
+    padding: 0.25rem; /* inner spacing to mimic a photo frame */
+    background: hsla(260, 50%, 12%, 0.8);
+  }
+
+  /* Buttons */
+  .btn-neuro {
+    @apply relative overflow-hidden rounded-xl px-8 py-3 font-medium transition-all duration-300;
+    background: linear-gradient(135deg, hsl(260 50% 16%), hsl(265 70% 20%));
+    border: 1px solid hsla(265, 90%, 72%, 0.4);
+    box-shadow: 0 0 25px hsla(265, 90%, 72%, 0.25);
+    color: hsl(var(--foreground));
+  }
+
+  .btn-neuro:hover {
+    background: linear-gradient(135deg, hsl(265 90% 72%), hsl(290 85% 75%));
+    color: hsl(260 60% 10%);
+    transform: translateY(-2px);
+    box-shadow: 0 0 50px hsla(265, 90%, 72%, 0.6);
+  }
+
+  .btn-neuro:active {
+    transform: translateY(0);
+  }
+
+  /* Glows */
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-lg {
+    box-shadow: var(--shadow-glow-lg);
+  }
+}
+
+/* === Components === */
+@layer components {
+  .about-page {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Stronger Ambient Purple Halo Behind Hero */
+  .about-page::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1400px;
+    height: 1400px;
+    background: radial-gradient(circle, hsla(265, 90%, 72%, 0.4), transparent 70%);
+    filter: blur(180px);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .about-hero {
+    position: relative;
+  }
+
+  .about-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 700px;
+    background: radial-gradient(circle, hsla(290, 90%, 75%, 0.25), transparent 70%);
+    filter: blur(100px);
+    z-index: -1;
+  }
+}
