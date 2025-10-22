@@ -1,220 +1,187 @@
-import { 
-  Code, 
-  GitBranch, 
-  Shield, 
-  Rocket, 
-  FileArrowDown,
-  LinkedinLogo,
-  GithubLogo,
-  TwitterLogo
-} from "@phosphor-icons/react";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
+import { ShieldCheck, Code, Rocket, TrendUp } from '@phosphor-icons/react';
+import rayanPortrait from '@/assets/rayan-portrait.png';
+
+
+const techStack = [
+  'Solidity', 'TypeScript', 'React', 'Node.js',
+  'Ethereum', 'Polygon', 'Arbitrum', 'Optimism',
+  'Hardhat', 'Foundry', 'Next.js', 'IPFS', 'OpenZeppelin'
+];
+
+const milestones = [
+  {
+    year: '2025',
+    title: 'Defi Stable Coin dApp Launch',
+    description: 'Full-stack decentralized finance application processing 1M+ transactions with zero downtime.',
+    metric: '1M+ tx',
+    icon: Rocket,
+  },
+  {
+    year: '2025',
+    title: 'USDT Token',
+    description: 'Redesigned ERC-20 token contract achieving 28% gas reduction and passing all security audits.',
+    metric: '-28% gas',
+    icon: TrendUp,
+  },
+  {
+    year: '2025',
+    title: 'Airdrop Token Security',
+    description: 'Comprehensive smart contract audit identifying and fixing critical vulnerabilities.',
+    metric: '100% secure',
+    icon: ShieldCheck,
+  },
+  {
+    year: '2025',
+    title: 'Cross Chain Token',
+    description: 'Layer-2 optimization project increasing transactions 6x faster on Arbitrum.',
+    metric: '6x faster',
+    icon: Code,
+  },
+];
 
 const About = () => {
-  const skills = [
-    "Solidity",
-    "Hardhat",
-    "Ethers.js",
-    "Web3.js",
-    "React",
-    "Next.js",
-    "TypeScript",
-    "Tailwind CSS",
-    "Vercel",
-    "IPFS",
-    "MetaMask",
-    "WalletConnect",
-    "Chainlink",
-    "OpenZeppelin"
-  ];
-
-  const timeline = [
-    {
-      year: "2025",
-      title: "Full-Stack Web3 Development",
-      description: "Building production dApps and consulting for Web3 startups"
-    },
-    {
-      year: "2023-2024",
-      title: "Junior Blockchain Developer",
-      description: "Launched 10+ smart contracts and dApps on Ethereum mainnet"
-    },
-    {
-      year: "2023",
-      title: "Started Web3 Journey",
-      description: "Discovered blockchain development and began learning Solidity"
-    }
-  ];
-
   return (
     <div className="min-h-screen">
       <Navigation />
+      
+      <main className="pt-24">
+        {/* Hero Section */}
+        <section className="py-16 md:py-24">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+              {/* Portrait */}
+              <div className="animate-blur-in">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full" />
+                  <div className="relative glass-card p-2 rounded-xl overflow-hidden">
+                    <img
+                      src={rayanPortrait}
+                      alt="Rayan - Full-Stack Blockchain Developer"
+                      className="w-full h-auto rounded-xl object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-12 animate-fade-in">
-            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-accent mx-auto mb-6 flex items-center justify-center text-3xl font-semibold">
-              R
+              {/* Content */}
+              <div className="animate-fade-up">
+                <h1 className="text-5xl md:text-6xl font-light mb-6 leading-tight">
+                  Building the <span className="text-gradient">Future of Finance</span>
+                </h1>
+                <p className="text-xl text-foreground/80 mb-8 leading-relaxed">
+                  With over 3+ years of experience in blockchain development, I've helped dozens of startups
+                  and enterprises build secure, scalable decentralized applications.
+                </p>
+                <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
+                  My expertise spans smart contract development, dApp architecture, tokenomics design,
+                  and Layer-2 scaling solutions. I'm passionate about creating infrastructure that
+                  empowers the next generation of Web3 applications.
+                </p>
+                <div className="flex gap-4 flex-wrap">
+                  <a
+                    href="#timeline"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.querySelector('#timeline')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="btn-neuro inline-flex items-center gap-2"
+                  >
+                    View Projects
+                  </a>
+                  <a
+                    href="/#contact"
+                    className="inline-flex items-center gap-2 px-8 py-4 rounded-xl glass hover:bg-muted/20 transition-all duration-300"
+                  >
+                    Get in Touch
+                  </a>
+                </div>
+              </div>
             </div>
-            <h1 className="text-5xl sm:text-6xl font-light tracking-tight mb-4">
-              About <span className="text-gradient">Rayan</span>
-            </h1>
-            <p className="text-xl text-muted-foreground">
-              Web3 Developer with 2+ years building secure smart contracts and dApps
+          </div>
+        </section>
+
+        {/* Tech Stack */}
+        <section className="py-16 md:py-24 bg-muted/10">
+          <div className="container mx-auto px-4 md:px-8">
+            <h2 className="text-4xl md:text-5xl font-light text-center mb-4">
+              Technical <span className="text-gradient">Expertise</span>
+            </h2>
+            <p className="text-center text-foreground/60 mb-16 max-w-2xl mx-auto">
+              Technologies and platforms I work with daily
             </p>
-          </div>
 
-          {/* Bio */}
-          <div className="glass-card rounded-2xl p-8 mb-12">
-            <p className="text-lg leading-relaxed mb-4">
-              I'm Rayan, a Web3 developer passionate about building secure blockchain systems and polished user experiences. 
-              Over the past 3 years, I've specialized in Solidity smart contracts, dApp frontends with React and Next.js, 
-              and full-stack Web3 development.
+            <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+              {techStack.map((tech) => (
+                <div
+                  key={tech}
+                  className="glass-card px-6 py-3 hover:bg-muted/20 transition-all duration-300 rounded-full"
+                >
+                  <span className="text-foreground/80">{tech}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Timeline */}
+        <section id="timeline" className="py-16 md:py-24">
+          <div className="container mx-auto px-4 md:px-8">
+            <h2 className="text-4xl md:text-5xl font-light text-center mb-4">
+              Key <span className="text-gradient">Projects</span>
+            </h2>
+            <p className="text-center text-foreground/60 mb-16 max-w-2xl mx-auto">
+              Milestones and achievements in blockchain development
             </p>
-            <p className="text-lg leading-relaxed mb-4">
-              My approach combines security-first smart contract development with modern frontend design. Every project 
-              I work on is thoroughly tested, gas-optimized, and built with the end user in mind.
+
+            <div className="max-w-4xl mx-auto space-y-8">
+              {milestones.map((milestone, index) => (
+                <div
+                  key={index}
+                  className="glass-card hover:bg-muted/20 transition-all duration-300 p-6 rounded-2xl"
+                >
+                  <div className="flex flex-col md:flex-row gap-6">
+                    {/* Icon & Metric */}
+                    <div className="flex md:flex-col items-center md:items-start gap-4 md:gap-2 md:min-w-[120px]">
+                      <div className="w-12 h-12 rounded-xl glass flex items-center justify-center">
+                        <milestone.icon size={24} weight="light" className="text-primary" />
+                      </div>
+                      <div className="text-2xl font-light text-gradient">
+                        {milestone.metric}
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1">
+                      <div className="text-sm text-foreground/50 mb-2">{milestone.year}</div>
+                      <h3 className="text-2xl font-light mb-3">{milestone.title}</h3>
+                      <p className="text-foreground/70 leading-relaxed">
+                        {milestone.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-16 md:py-24 bg-muted/10">
+          <div className="container mx-auto px-4 md:px-8 text-center">
+            <h2 className="text-4xl md:text-5xl font-light mb-6">
+              Ready to Start Your <span className="text-gradient">Blockchain Project?</span>
+            </h2>
+            <p className="text-xl text-foreground/70 mb-8 max-w-2xl mx-auto">
+              Let's discuss how I can help bring your vision to life with secure, scalable infrastructure.
             </p>
-            <p className="text-lg leading-relaxed">
-              I work with startups, crypto teams, and VCs to bring Web3 ideas to life — from initial architecture 
-              to production deployment and beyond.
-            </p>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex justify-center gap-4 mb-12">
-            <a href="https://github.com/Rayannnzn" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="lg">
-                <GithubLogo size={20} weight="light" />
-                GitHub
-              </Button>
-            </a>
-            <a href="https://www.linkedin.com/in/muhammad-rayan-779318320" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="lg">
-                <LinkedinLogo size={20} weight="light" />
-                LinkedIn
-              </Button>
-            </a>
-            <a href="https://x.com/real_rayanhere" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="lg">
-                <TwitterLogo size={20} weight="light" />
-                Twitter
-              </Button>
+            <a href="/#contact" className="btn-neuro inline-flex items-center gap-2">
+              Get Started
             </a>
           </div>
-
-          <div className="text-center">
-            <a href="/resume.pdf" download>
-              <Button variant="neumorphic" size="lg">
-                <FileArrowDown size={20} weight="light" />
-                Download Resume
-              </Button>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-card/30">
-        <div className="container mx-auto max-w-3xl">
-          <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-12 text-center">
-            Experience <span className="text-gradient">Timeline</span>
-          </h2>
-
-          <div className="space-y-8">
-            {timeline.map((item, index) => (
-              <div key={index} className="flex gap-6 items-start">
-                <div className="flex-shrink-0 w-20 text-right">
-                  <span className="text-sm font-medium text-primary">{item.year}</span>
-                </div>
-                <div className="flex-shrink-0 mt-1">
-                  <div className="w-3 h-3 rounded-full bg-primary"></div>
-                  {index !== timeline.length - 1 && (
-                    <div className="w-px h-24 bg-border ml-1 mt-2"></div>
-                  )}
-                </div>
-                <div className="glass-card rounded-xl p-4 flex-1">
-                  <h3 className="font-medium mb-1">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Skills */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-12 text-center">
-            Skills & <span className="text-gradient">Tech Stack</span>
-          </h2>
-
-          <div className="flex flex-wrap justify-center gap-3">
-            {skills.map((skill) => (
-              <div
-                key={skill}
-                className="glass-card rounded-full px-6 py-3 text-sm hover:scale-105 transition-all glow-hover"
-              >
-                {skill}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Specialties */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-card/30">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-12 text-center">
-            Core <span className="text-gradient">Specialties</span>
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: Code, title: "Smart Contracts", desc: "Solidity development with security best practices" },
-              { icon: GitBranch, title: "dApp Development", desc: "React/Next.js frontends with Web3 integration" },
-              { icon: Shield, title: "Security Audits", desc: "Comprehensive testing and vulnerability assessment" },
-              { icon: Rocket, title: "Deployment", desc: "Production deployment to Ethereum and L2s" }
-            ].map((specialty) => (
-              <div key={specialty.title} className="glass-card rounded-2xl p-6 text-center">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 mx-auto">
-                  <specialty.icon size={24} weight="light" className="text-primary" />
-                </div>
-                <h3 className="font-medium mb-2">{specialty.title}</h3>
-                <p className="text-sm text-muted-foreground">{specialty.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-4">
-            Ready to <span className="text-gradient">Collaborate?</span>
-          </h2>
-          <p className="text-muted-foreground mb-8">
-            Let's build something amazing together
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/#contact">
-              <Button variant="neumorphic" size="lg">
-                Start a Project
-              </Button>
-            </a>
-            <a href="/#projects">
-              <Button variant="ghost" size="lg">
-                View My Work
-              </Button>
-            </a>
-          </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
       <Footer />
     </div>
