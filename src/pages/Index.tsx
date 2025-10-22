@@ -181,6 +181,25 @@ const Index = () => {
     }
   ];
 
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+const nextSlide = () => {
+  setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+};
+
+const prevSlide = () => {
+  setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+};
+
+// Auto-slide every 5 seconds
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  }, 5000);
+  return () => clearInterval(interval);
+}, [testimonials.length]);
+
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -272,23 +291,50 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 px-4 observe-section">
-        <div className="container mx-auto mb-12 text-center">
-          <h2 className="text-4xl sm:text-5xl font-light tracking-tight mb-4">
-            Client <span className="text-gradient">Results</span>
-          </h2>
-          <p className="text-muted-foreground">What teams say about working with Rayan</p>
-        </div>
+{/* Testimonials Section */}
+<section id="testimonials" className="py-24 px-4 observe-section">
+  <div className="container mx-auto mb-12 text-center">
+    <h2 className="text-4xl sm:text-5xl font-light tracking-tight mb-4">
+      Client <span className="text-gradient">Results</span>
+    </h2>
+    <p className="text-muted-foreground">
+      What teams say about working with Rayan
+    </p>
+  </div>
 
-        <div className="overflow-x-auto pb-4">
-          <div className="flex gap-6 px-4 snap-x snap-mandatory" style={{ scrollbarWidth: "none" }}>
-            {testimonials.map((testimonial) => (
-              <TestimonialCard key={testimonial.name} {...testimonial} />
-            ))}
+  {/* Carousel */}
+  <div className="relative max-w-5xl mx-auto">
+    <div className="overflow-hidden rounded-3xl">
+      <div
+        className="flex transition-transform duration-500 ease-in-out"
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+      >
+        {testimonials.map((testimonial) => (
+          <div
+            key={testimonial.name}
+            className="flex-shrink-0 w-full flex justify-center"
+          >
+            <TestimonialCard {...testimonial} />
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+
+    {/* Buttons */}
+    <button
+      onClick={prevSlide}
+      className="absolute left-0 top-1/2 -translate-y-1/2 bg-background/70 backdrop-blur-md hover:bg-background/90 rounded-full p-3 shadow-lg"
+    >
+      <CaretLeft size={28} weight="bold" className="text-primary" />
+    </button>
+    <button
+      onClick={nextSlide}
+      className="absolute right-0 top-1/2 -translate-y-1/2 bg-background/70 backdrop-blur-md hover:bg-background/90 rounded-full p-3 shadow-lg"
+    >
+      <CaretRight size={28} weight="bold" className="text-primary" />
+    </button>
+  </div>
+</section>
 
       {/* How It Works */}
       <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 observe-section">

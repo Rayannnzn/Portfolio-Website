@@ -10,7 +10,7 @@ interface TestimonialCardProps {
 
 const TestimonialCard = ({ name, role, company, content, result }: TestimonialCardProps) => {
   return (
-    <div className="glass-card rounded-2xl p-6 min-w-[320px] md:min-w-[400px] snap-center ambient-glow">
+    <div className="glass-card rounded-2xl p-8 w-[450px] h-[420px] flex flex-col justify-between text-center glow-hover ambient-glow">
       <div className="flex gap-1 mb-4">
         {[...Array(5)].map((_, i) => (
           <Star key={i} size={16} weight="fill" className="text-primary" />
