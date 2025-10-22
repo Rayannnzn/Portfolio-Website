@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { List, X } from "@phosphor-icons/react";
 import { Button } from "./ui/button";
 
@@ -7,11 +7,16 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  // 👇 Close mobile menu and scroll to top on route change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -24,16 +29,43 @@ const Navigation = () => {
     { label: "Contact", href: "/#contact" },
   ];
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith("/#")) {
-      e.preventDefault();
-      const id = href.substring(2);
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-        setIsMobileMenuOpen(false);
-      }
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setIsMobileMenuOpen(false);
     }
+  };
+
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+
+    // ✅ Go Home
+    if (href === "/") {
+      navigate("/");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
+    // ✅ Handle section scroll (/#projects, /#contact)
+    if (href.startsWith("/#")) {
+      const sectionId = href.substring(2);
+
+      if (location.pathname === "/") {
+        scrollToSection(sectionId);
+      } else {
+        // Navigate home first, then scroll
+        navigate("/");
+        setTimeout(() => scrollToSection(sectionId), 400);
+      }
+      return;
+    }
+
+    // ✅ Navigate to other pages (About, Blog)
+    navigate(href);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -45,7 +77,11 @@ const Navigation = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-semibold tracking-tighter">
+          <Link
+            to="/"
+            className="text-2xl font-semibold tracking-tighter"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
             <span className="text-gradient">Rayan</span>
           </Link>
 
@@ -55,7 +91,7 @@ const Navigation = () => {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="text-sm font-light hover:text-primary transition-colors duration-200"
               >
                 {link.label}
@@ -65,12 +101,12 @@ const Navigation = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <a href="/#projects">
+            <a href="/#projects" onClick={(e) => handleNavClick(e, "/#projects")}>
               <Button variant="ghost" size="sm">
                 View Projects
               </Button>
             </a>
-            <a href="/#contact">
+            <a href="/#contact" onClick={(e) => handleNavClick(e, "/#contact")}>
               <Button variant="neumorphic" size="sm">
                 Hire Rayan
               </Button>
@@ -99,24 +135,22 @@ const Navigation = () => {
             <a
               key={link.href}
               href={link.href}
-              onClick={(e) => {
-                scrollToSection(e, link.href);
-                setIsMobileMenuOpen(false);
-              }}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="py-4 text-lg font-light hover:text-primary transition-colors border-b border-border/50"
               style={{ animation: `fade-in 320ms ease-out ${index * 50}ms both` }}
             >
               {link.label}
             </a>
           ))}
+
           <div className="mt-8 space-y-3">
-            <a href="/#projects" className="block">
-              <Button variant="ghost" className="w-full" onClick={() => setIsMobileMenuOpen(false)}>
+            <a href="/#projects" onClick={(e) => handleNavClick(e, "/#projects")}>
+              <Button variant="ghost" className="w-full">
                 View Projects
               </Button>
             </a>
-            <a href="/#contact" className="block">
-              <Button variant="neumorphic" className="w-full" onClick={() => setIsMobileMenuOpen(false)}>
+            <a href="/#contact" onClick={(e) => handleNavClick(e, "/#contact")}>
+              <Button variant="neumorphic" className="w-full">
                 Hire Rayan
               </Button>
             </a>
