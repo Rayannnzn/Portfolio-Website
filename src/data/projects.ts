@@ -4,8 +4,34 @@ import tsenderPreview from "@/assets/tsender-preview.jpg";
 import stablecoinPreview from "@/assets/stablecoin-preview.jpg";
 import crowdfundingPreview from "@/assets/crowdfunding-preview.jpg";
 import rafflePreview from "@/assets/raffle-preview.jpg";
+import nftMarketplacePreview from "@/assets/nftMarketplacePreview.jpg";
 
 export const projects = [
+
+      {
+  id: "nft-marketplace",
+  title: "NFT Marketplace",
+  shortDescription: "Decentralized marketplace for NFT trading with compliance and live indexing",
+  description: "A fully-featured NFT marketplace supporting real-time updates, database indexing, and compliance filtering to ensure secure and transparent trading.",
+  image: nftMarketplacePreview, // Add this line
+  techStack: ["Solidity","Next.js", "TypeScript", "PostgreSQL", "Docker", "Wagmi", "Vercel"],
+  liveUrl: "https://nft-market-place-gilt.vercel.app",
+  liveCode: "https://github.com/Rayannnzn/NFT-MarketPlace",
+  caseStudyUrl: "/projects/nft-marketplace",
+  duration: "1 month",
+  role: "Full-stack (Frontend + Indexer + Database Integration)",
+  team: "Solo",
+  problem: "Existing NFT platforms lack real-time data synchronization and compliance checks, making them vulnerable to outdated listings and suspicious activity.",
+  solution: "Built a modern NFT marketplace with live indexers that sync blockchain data to the database, ensuring real-time updates for listings, purchases, and cancellations while enforcing compliance checks.",
+  highlights: [
+    "Deployed and hosted seamlessly on Vercel",
+    "Integrated real-time indexers with PostgreSQL",
+    "Automatic listing and delisting of NFTs based on blockchain events",
+    "Added compliance route to prevent suspicious or illicit access",
+    "Optimized UI for fast NFT browsing and interaction"
+  ],
+  impact: "Enhanced trust and transparency for NFT trading while maintaining live, accurate data across frontend and database."
+  },
 
     {
     id: "stablecoin",
@@ -17,7 +43,7 @@ export const projects = [
     liveUrl: "https://stablecoin-dapp.vercel.app",
     liveCode: "https://github.com/Rayannnzn/Stable-Coin-DApp",
     caseStudyUrl: "/projects/stablecoin",
-    duration: "4 months",
+    duration: "2 months",
     role: "Full-stack (UI + Smart Contracts)",
     team: "Solo",
     problem: "Need for a transparent, algorithmic stablecoin with robust collateralization and liquidation mechanisms.",
@@ -37,7 +63,7 @@ export const projects = [
     shortDescription: "Decentralized crowdfunding platform with milestone-based releases",
     description: "A transparent crowdfunding platform where campaign creators can raise funds with milestone-based fund releases and contributor voting rights.",
     image: crowdfundingPreview, // Add this line
-    techStack: ["Solidity", "React", "Hardhat", "IPFS", "MetaMask"],
+    techStack: ["Solidity","Wagmi", "React", "Hardhat", "IPFS", "MetaMask"],
     liveUrl: "https://crowd-funding-dapp-kappa.vercel.app",
     liveCode: "https://github.com/Rayannnzn/Crowd-Funding-Dapp",
     caseStudyUrl: "/projects/crowdfunding",
@@ -62,11 +88,11 @@ export const projects = [
     shortDescription: "Provably fair lottery system with Chainlink VRF",
     description: "A fully decentralized lottery platform using Chainlink VRF for verifiable randomness and automatic prize distribution.",
     image: rafflePreview, // Add this line
-    techStack: ["Solidity", "React", "Chainlink VRF", "Web3.js", "Tailwind"],
+    techStack: ["Solidity", "React", "Chainlink VRF", "Wagmi", "Tailwind"],
     liveUrl: "https://raffle-dapp-navy.vercel.app",
     liveCode: "https://github.com/Rayannnzn/Decentralized-Raffle-DApp",
     caseStudyUrl: "/projects/raffle",
-    duration: "2 months",
+    duration: "1 month",
     role: "Full-stack (UI + Smart Contracts)",
     team: "Solo",
     problem: "Online lotteries lack transparency and users can't verify fairness of the random selection process.",
@@ -86,11 +112,11 @@ export const projects = [
     shortDescription: "Multi-signature token transfer platform with batch operations",
     description: "A sophisticated dApp enabling secure batch token transfers with multi-signature wallet support. Features gas optimization and comprehensive testing.",
     image: tsenderPreview, // Add this line
-    techStack: ["Solidity", "React", "Hardhat", "Ethers.js", "Tailwind"],
+    techStack: ["Solidity","Wagmi", "React", "Hardhat", "Ethers.js", "Tailwind"],
     liveUrl: "https://t-sender-ui-cyan.vercel.app",
     liveCode: "https://github.com/Rayannnzn/TSender-UI",
     caseStudyUrl: "/projects/tsender",
-    duration: "3 months",
+    duration: "1 months",
     role: "Full-stack (UI + Smart Contracts)",
     team: "Solo",
     problem: "Users needed a reliable way to send tokens to multiple addresses without paying excessive gas fees or risking transaction failures.",
