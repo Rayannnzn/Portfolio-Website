@@ -214,7 +214,7 @@ useEffect(() => {
             </div>
             
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight mb-6">
-              Rayan — Web3 Engineer & 
+              Rayan — Full Stack Web3 Engineer & 
               <span className="text-gradient"> dApp Builder</span>
             </h1>
             
