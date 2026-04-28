@@ -5,9 +5,34 @@ import stablecoinPreview from "@/assets/stablecoin-preview.jpg";
 import crowdfundingPreview from "@/assets/crowdfunding-preview.jpg";
 import rafflePreview from "@/assets/raffle-preview.jpg";
 import nftMarketplacePreview from "@/assets/nftMarketplacePreview.jpg";
+import hiremyroomPreview from "@/assets/hiremyroom.png";
 
 export const projects = [
 
+  {
+  id: "hiremyroom",
+  title: "Hire MyRoom App",
+  shortDescription: "Full-stack room renting platform for listing, booking, and managing rental spaces",
+  description: "A full-stack web platform that allows users to list rooms, search available properties, and book rentals with a seamless user experience and secure backend system.",
+  image: hiremyroomPreview, 
+  techStack: ["Next.js", "Node.js", "Express", "MongoDB", "TypeScript", "Tailwind CSS"],
+  liveUrl: "https://hire-my-room.vercel.app/", // update if different
+  liveCode: "https://github.com/Rayannnzn/HireMyRoom", // update if needed
+  caseStudyUrl: "/projects/hiremyroom",
+  duration: "X months", // replace with actual
+  role: "Full-stack Developer",
+  team: "Solo",
+  problem: "Users struggle to find affordable and reliable rental rooms with transparent pricing and easy booking.",
+  solution: "Built a platform where landlords can list rooms and users can search, filter, and book properties with authentication and real-time data handling.",
+  highlights: [
+    "Implemented user authentication and role-based access (tenant/landlord)",
+    "Built dynamic property listings with filters and search functionality",
+    "Integrated booking system with availability management",
+    "Responsive UI for mobile and desktop users",
+    "RESTful APIs for scalable backend operations"
+  ],
+  impact: "Enabled streamlined room discovery and booking, reducing manual coordination and improving user experience"
+},
 
     {
     id: "stablecoin",
