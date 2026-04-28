@@ -8,30 +8,6 @@ import nftMarketplacePreview from "@/assets/nftMarketplacePreview.jpg";
 
 export const projects = [
 
-      {
-  id: "nft-marketplace",
-  title: "NFT Marketplace",
-  shortDescription: "Decentralized marketplace for NFT trading with compliance and live indexing",
-  description: "A fully-featured NFT marketplace supporting real-time updates, database indexing, and compliance filtering to ensure secure and transparent trading.",
-  image: nftMarketplacePreview, // Add this line
-  techStack: ["Solidity","Next.js", "TypeScript", "PostgreSQL", "Docker", "Wagmi", "Vercel"],
-  liveUrl: "https://nft-market-place-gilt.vercel.app",
-  liveCode: "https://github.com/Rayannnzn/NFT-MarketPlace",
-  caseStudyUrl: "/projects/nft-marketplace",
-  duration: "1 month",
-  role: "Full-stack (Frontend + Indexer + Database Integration)",
-  team: "Solo",
-  problem: "Existing NFT platforms lack real-time data synchronization and compliance checks, making them vulnerable to outdated listings and suspicious activity.",
-  solution: "Built a modern NFT marketplace with live indexers that sync blockchain data to the database, ensuring real-time updates for listings, purchases, and cancellations while enforcing compliance checks.",
-  highlights: [
-    "Deployed and hosted seamlessly on Vercel",
-    "Integrated real-time indexers with PostgreSQL",
-    "Automatic listing and delisting of NFTs based on blockchain events",
-    "Added compliance route to prevent suspicious or illicit access",
-    "Optimized UI for fast NFT browsing and interaction"
-  ],
-  impact: "Enhanced trust and transparency for NFT trading while maintaining live, accurate data across frontend and database."
-  },
 
     {
     id: "stablecoin",
@@ -55,6 +31,31 @@ export const projects = [
       "Extensive testing including edge cases and attack vectors"
     ],
     impact: "$500K+ in total value locked during testnet phase"
+  },
+
+        {
+  id: "nft-marketplace",
+  title: "NFT Marketplace",
+  shortDescription: "Decentralized marketplace for NFT trading with compliance and live indexing",
+  description: "A fully-featured NFT marketplace supporting real-time updates, database indexing, and compliance filtering to ensure secure and transparent trading.",
+  image: nftMarketplacePreview,
+  techStack: ["Solidity","Next.js", "TypeScript", "PostgreSQL", "Docker", "Wagmi", "Vercel"],
+  liveUrl: "https://nft-market-place-gilt.vercel.app",
+  liveCode: "https://github.com/Rayannnzn/NFT-MarketPlace",
+  caseStudyUrl: "/projects/nft-marketplace",
+  duration: "1 month",
+  role: "Full-stack (Frontend + Indexer + Database Integration)",
+  team: "Solo",
+  problem: "Existing NFT platforms lack real-time data synchronization and compliance checks, making them vulnerable to outdated listings and suspicious activity.",
+  solution: "Built a modern NFT marketplace with live indexers that sync blockchain data to the database, ensuring real-time updates for listings, purchases, and cancellations while enforcing compliance checks.",
+  highlights: [
+    "Deployed and hosted seamlessly on Vercel",
+    "Integrated real-time indexers with PostgreSQL",
+    "Automatic listing and delisting of NFTs based on blockchain events",
+    "Added compliance route to prevent suspicious or illicit access",
+    "Optimized UI for fast NFT browsing and interaction"
+  ],
+  impact: "Enhanced trust and transparency for NFT trading while maintaining live, accurate data across frontend and database."
   },
 
     {

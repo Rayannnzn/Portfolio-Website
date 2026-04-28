@@ -251,17 +251,7 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* Featured In */}
-      <section className="py-12 px-4 observe-section">
-        <div className="container mx-auto">
-          <p className="text-center text-sm text-muted-foreground mb-8">Trusted by Web3 teams</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 opacity-50">
-            {["Ethereum", "Polygon", "Chainlink", "Hardhat", "OpenZeppelin"].map((name) => (
-              <span key={name} className="text-lg font-light">{name}</span>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Projects Section */}
       <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 observe-section">
