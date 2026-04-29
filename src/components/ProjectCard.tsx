@@ -22,10 +22,10 @@ const ProjectCard = ({
   image,
 }: ProjectCardProps) => {
   return (
-    <div className="group glass-card rounded-2xl p-6 hover:scale-[1.02] transition-all duration-300 glow-hover glow-backdrop ambient-glow">
+    <div className="group glass-card rounded-2xl p-6 transition-all duration-300 glow-hover glow-backdrop ambient-glow">
       {/* Clickable area for case study */}
       <Link to={caseStudyUrl} className="block">
-        <div className="aspect-video bg-secondary/50 rounded-xl mb-4 overflow-hidden relative">
+        <div className="aspect-video bg-secondary/50 rounded-xl mb-4 overflow-hidden relative border border-white/10">
           {image ? (
             <img
               src={image}
@@ -40,13 +40,13 @@ const ProjectCard = ({
           )}
 
           {/* Hover overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+          <div className="absolute inset-0 bg-gradient-to-t from-background/92 via-background/18 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
             <span className="text-sm font-medium">View Case Study</span>
           </div>
         </div>
       </Link>
 
-      <h3 className="text-xl font-medium mb-2 group-hover:text-primary transition-colors">
+      <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
         {title}
       </h3>
       <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
@@ -57,7 +57,7 @@ const ProjectCard = ({
         {techStack.map((tech) => (
           <span
             key={tech}
-            className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20"
+            className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 shadow-[0_0_18px_hsl(263_86%_68%_/_0.08)]"
           >
             {tech}
           </span>

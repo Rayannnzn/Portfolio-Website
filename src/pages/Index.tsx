@@ -201,29 +201,29 @@ useEffect(() => {
 }, [testimonials.length]);
 
   return (
-    <div className="min-h-screen">
+    <div className="site-shell">
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="premium-hero pt-32 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="container mx-auto">
-          <div className="text-center max-w-4xl mx-auto mb-16 animate-fade-in">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm mb-6">
-              <span className="w-2 h-2 rounded-full bg-primary animate-glow-pulse"></span>
+          <div className="hero-copy-light text-center max-w-4xl mx-auto mb-16 animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm mb-6 text-foreground/88">
+              <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_16px_hsl(263_86%_68%_/_0.9)]"></span>
               Available for new projects
             </div>
             
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight mb-6">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[0.98] tracking-normal mb-6 text-balance">
               Rayan — Full Stack Web3 Engineer & 
               <span className="text-gradient"> dApp Builder</span>
             </h1>
             
-            <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
               Secure smart contracts and polished dApps. From audit-ready Solidity to production React frontends.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a href="#contact">
+              <a href="#contact" className="cta-spotlight rounded-md">
                 <Button variant="neumorphic" size="lg" className="min-w-[180px]">
                   Hire Rayan
                   <ArrowRight size={20} weight="light" />
@@ -239,11 +239,11 @@ useEffect(() => {
 
           {/* Hero Image */}
           <div className="relative max-w-5xl mx-auto glow-backdrop-strong">
-            <div className="glass-card rounded-3xl p-2 glow-hover ambient-glow-strong">
+            <div className="hero-visual-frame rounded-3xl p-2 glow-hover">
               <img 
                 src={heroImage} 
                 alt="Web3 Dashboard" 
-                className="rounded-2xl w-full"
+                className="rounded-2xl w-full border border-white/10"
                 style={{ animation: "scale-in 520ms ease-out 200ms both" }}
               />
             </div>
@@ -257,7 +257,7 @@ useEffect(() => {
       <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 observe-section">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl sm:text-5xl font-light tracking-tight mb-4">
+            <h2 className="text-4xl sm:text-5xl font-semibold tracking-normal mb-4">
               Featured <span className="text-gradient">Projects</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -284,7 +284,7 @@ useEffect(() => {
 {/* Testimonials Section */}
 <section id="testimonials" className="py-24 px-4 observe-section">
   <div className="container mx-auto mb-12 text-center">
-    <h2 className="text-4xl sm:text-5xl font-light tracking-tight mb-4">
+    <h2 className="text-4xl sm:text-5xl font-semibold tracking-normal mb-4">
       Client <span className="text-gradient">Results</span>
     </h2>
     <p className="text-muted-foreground">
@@ -313,13 +313,15 @@ useEffect(() => {
     {/* Buttons */}
     <button
       onClick={prevSlide}
-      className="absolute left-0 top-1/2 -translate-y-1/2 bg-background/70 backdrop-blur-md hover:bg-background/90 rounded-full p-3 shadow-lg"
+      className="absolute left-0 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-background/70 p-3 shadow-lg backdrop-blur-md transition hover:bg-white/10"
+      aria-label="Previous testimonial"
     >
       <CaretLeft size={28} weight="bold" className="text-primary" />
     </button>
     <button
       onClick={nextSlide}
-      className="absolute right-0 top-1/2 -translate-y-1/2 bg-background/70 backdrop-blur-md hover:bg-background/90 rounded-full p-3 shadow-lg"
+      className="absolute right-0 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-background/70 p-3 shadow-lg backdrop-blur-md transition hover:bg-white/10"
+      aria-label="Next testimonial"
     >
       <CaretRight size={28} weight="bold" className="text-primary" />
     </button>
@@ -330,7 +332,7 @@ useEffect(() => {
       <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 observe-section">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl sm:text-5xl font-light tracking-tight mb-4">
+            <h2 className="text-4xl sm:text-5xl font-semibold tracking-normal mb-4">
               How It <span className="text-gradient">Works</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -340,8 +342,8 @@ useEffect(() => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
             {services.map((service, index) => (
-              <div key={service.title} className="glass-card rounded-2xl p-6 hover:scale-[1.02] transition-all glow-hover glow-backdrop ambient-glow">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+              <div key={service.title} className="glass-card rounded-2xl p-6 transition-all glow-hover glow-backdrop ambient-glow">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 shadow-[0_0_24px_hsl(263_86%_68%_/_0.12)]">
                   <service.icon size={24} weight="light" className="text-primary" />
                 </div>
                 <h3 className="text-xl font-medium mb-2">{service.title}</h3>
@@ -374,8 +376,8 @@ useEffect(() => {
         <div className="container mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {features.map((feature) => (
-              <div key={feature.title} className="glass-card rounded-2xl p-6 text-center hover:scale-[1.02] transition-all glow-hover ambient-glow">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+              <div key={feature.title} className="glass-card rounded-2xl p-6 text-center transition-all glow-hover ambient-glow">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 mx-auto shadow-[0_0_24px_hsl(263_86%_68%_/_0.12)]">
                   <feature.icon size={24} weight="light" className="text-primary" />
                 </div>
                 <h3 className="text-lg font-medium mb-2">{feature.title}</h3>
@@ -389,7 +391,7 @@ useEffect(() => {
       {/* Mission Statement */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 observe-section">
         <div className="container mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-6">
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-normal mb-6">
             Building Web3 with <span className="text-gradient">Security & UX</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
@@ -404,7 +406,7 @@ useEffect(() => {
       <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 observe-section">
         <div className="container mx-auto max-w-2xl">
           <div className="text-center mb-12">
-            <h2 className="text-4xl sm:text-5xl font-light tracking-tight mb-4">
+            <h2 className="text-4xl sm:text-5xl font-semibold tracking-normal mb-4">
               Let's Build <span className="text-gradient">Together</span>
             </h2>
             <p className="text-muted-foreground">

@@ -71,7 +71,7 @@ const Navigation = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "backdrop-blur-xl bg-background/80 shadow-lg" : "bg-transparent"
+        isScrolled ? "border-b border-white/10 bg-background/72 shadow-[0_16px_50px_hsl(230_44%_2%_/_0.45)] backdrop-blur-xl" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,7 +92,7 @@ const Navigation = () => {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-light hover:text-primary transition-colors duration-200"
+                className="text-sm font-medium text-foreground/72 hover:text-foreground transition-colors duration-200"
               >
                 {link.label}
               </a>
@@ -115,7 +115,7 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-secondary/50 transition-colors"
+            className="md:hidden p-2 rounded-lg border border-white/10 bg-white/[0.03] hover:bg-white/[0.08] transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
